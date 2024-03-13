@@ -5,7 +5,7 @@ import 'package:http/http.dart' as http;
 class SyncService {
   String baseUrl = 'https://www.wswork.com.br/cars/leads';
 
-  Future<void> syncWithServer(Map<String, dynamic> leadsData) async {
+  Future<void> syncWithServer(List<Map<String, dynamic>> leadsData) async {
     try {
       final response = await http.post(
         Uri.parse(baseUrl),
@@ -21,7 +21,7 @@ class SyncService {
     }
   }
 
-  void startSyncPeriodically(Map<String, dynamic> leadsData) {
+  void startSyncPeriodically(List<Map<String, dynamic>> leadsData) {
     Timer.periodic(const Duration(minutes: 15), (timer) async {
       await syncWithServer(leadsData);
     });

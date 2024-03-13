@@ -185,6 +185,14 @@ mixin _$CarStore on CarStoreBase, Store {
         .run(() => super.handleEuQueroPress(context, car));
   }
 
+  late final _$fetchLeadsAsyncAction =
+      AsyncAction('CarStoreBase.fetchLeads', context: context);
+
+  @override
+  Future<List<Map<String, Object?>>> fetchLeads() {
+    return _$fetchLeadsAsyncAction.run(() => super.fetchLeads());
+  }
+
   late final _$CarStoreBaseActionController =
       ActionController(name: 'CarStoreBase', context: context);
 

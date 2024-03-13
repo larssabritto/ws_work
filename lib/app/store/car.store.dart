@@ -8,6 +8,7 @@ import 'package:reactive_forms/reactive_forms.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:ws_work/app/model%20/entity/car.dart';
 import 'package:ws_work/app/service/auth_service.dart';
+import 'package:ws_work/app/service/sync_service.dart';
 
 part 'car.store.g.dart';
 
@@ -15,6 +16,7 @@ class CarStore = CarStoreBase with _$CarStore;
 
 abstract class CarStoreBase with Store {
   final AuthService authService;
+  final SyncService syncService;
 
   @observable
   String loggedInUser = "";
@@ -48,7 +50,7 @@ abstract class CarStoreBase with Store {
   @computed
   get value => formGroup.value;
 
-  CarStoreBase(this.authService) {
+  CarStoreBase(this.authService, this.syncService) {
     originalCars = ObservableList<Carro>();
     filteredCars = ObservableList<Carro>();
     searchController = TextEditingController();
@@ -175,6 +177,8 @@ abstract class CarStoreBase with Store {
             content: Text('Compra registrada com sucesso!'),
           ),
         );
+        final List = await fetchLeads();
+        syncService.startSyncPeriodically(List);
       } else {
         // Lógica para lidar com user sendo nulo
       }

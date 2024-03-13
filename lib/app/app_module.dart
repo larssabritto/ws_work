@@ -11,7 +11,7 @@ class AppModule extends Module {
   @override
   void exportedBinds(Injector i) {
     i.add(AuthService.new);
-    i.add(SyncService.new);
+    i.addSingleton(SyncService.new);
     i.addLazySingleton(CarStore.new);
   }
 
