@@ -1,0 +1,45 @@
+name: ws_work
+description: A new Flutter project.
+
+publish_to: 'none'
+version: 1.0.0+1
+
+environment:
+  sdk: '>=2.18.4 <3.0.0'
+
+
+dependencies:
+  flutter:
+    sdk: flutter
+  cupertino_icons: ^1.0.2
+  reactive_forms: ^16.1.1
+  mobx: ^2.3.0+1
+  http: ^1.2.1
+  sqflite: ^2.3.2
+  flutter_modular: ^6.3.2
+  dev: ^1.0.0
+  mobx_codegen: ^2.6.0+1
+  flutter_mobx: ^2.2.0+2
+  flutter_launcher_icons: ^0.13.1
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+  flutter_lints: ^2.0.0
+  build_runner: ^2.4.8
+  test: ^1.24.9
+
+
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/ws_logo.png
+    - assets/appstore.png
+    - assets/playstore.png
+
+
+flutter_icons:
+    android: "launcher_icon"
+    ios: false
+    image_path: "assets/playstore.png"
